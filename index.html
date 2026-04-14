@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawver AI — AI Automation for Local Businesses</title>
+  <meta name="description" content="We build AI agents that answer your phones, book appointments, and follow up with leads — so you never lose a customer again.">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1a1a1a;
+      --border: #262626;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.1);
+      --accent-hover: #06b6d4;
+      --green: #4ade80;
+      --green-dim: rgba(74, 222, 128, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    nav .logo span { color: var(--accent); }
+
+    nav .cta-sm {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    nav .cta-sm:hover { background: var(--accent-hover); }
+
+    .hero {
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--text-muted); }
+
+    .proof-bar {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .proof-bar .stat { text-align: center; }
+    .proof-bar .stat .num { font-size: 1.75rem; font-weight: 800; color: var(--accent); }
+    .proof-bar .stat .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    section { padding: 4rem 0; }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin-bottom: 2.5rem;
+    }
+
+    .problems {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.2s;
+    }
+    .problem-card:hover { border-color: var(--accent); }
+
+    .problem-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .problem-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .problem-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+
+    .service-card .tag-sm {
+      display: inline-block;
+      background: var(--green-dim);
+      color: var(--green);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.875rem; color: var(--text-muted); }
+
+    .service-card ul {
+      margin-top: 0.75rem;
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .service-card ul li { margin-bottom: 0.35rem; }
+
+    .how-it-works {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      counter-reset: step;
+    }
+
+    .step { position: relative; }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.85rem; color: var(--text-muted); }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .price-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, var(--accent-dim), var(--surface));
+    }
+
+    .price-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .price-card .price { font-size: 2.25rem; font-weight: 800; margin: 0.75rem 0 0.25rem; }
+    .price-card .price-note { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+
+    .price-card ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .price-card ul li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-card ul li:last-child { border-bottom: none; }
+    .price-card ul li::before { content: "✓ "; color: var(--green); }
+
+    .price-card .btn { width: 100%; text-align: center; margin-top: 1.25rem; display: block; }
+
+    .cta-section {
+      text-align: center;
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 3rem 0 2.5rem; }
+      .proof-bar { gap: 1.5rem; }
+      section { padding: 2.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <nav>
+      <div class="logo">Clawver<span>.</span>ai</div>
+      <a href="#contact" class="cta-sm">Book a Call</a>
+    </nav>
+
+    <div class="hero">
+      <div class="tag">AI Automation for Local Business</div>
+      <h1>Your front desk<br>runs on <em>autopilot</em></h1>
+      <p>We build AI agents that answer your phones, book appointments, and follow up with leads 24/7 — so you never lose a customer again.</p>
+      <div class="cta-group">
+        <a href="#contact" class="btn btn-primary">Get a Free Demo</a>
+        <a href="#how" class="btn btn-secondary">See How It Works</a>
+      </div>
+      <div class="proof-bar">
+        <div class="stat"><div class="num">24/7</div><div class="label">Always Available</div></div>
+        <div class="stat"><div class="num">&lt;2s</div><div class="label">Response Time</div></div>
+        <div class="stat"><div class="num">40%</div><div class="label">More Bookings</div></div>
+        <div class="stat"><div class="num">0</div><div class="label">Missed Calls</div></div>
+      </div>
+    </div>
+
+    <section id="problems">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">You're losing customers right now</h2>
+      <p class="section-subtitle">Every missed call is a lost customer. Every slow follow-up is a lost sale. Here's what's happening in your business today:</p>
+      <div class="problems">
+        <div class="problem-card">
+          <span class="icon">📞</span>
+          <h3>62% of calls go to voicemail</h3>
+          <p>Customers call the next business on Google. You never even know they tried.</p>
+        </div>
+        <div class="problem-card">
+          <span class="icon">⏰</span>
+          <h3>78% of leads hire the first responder</h3>
+          <p>If you don't reply within 5 minutes, they've already booked someone else.</p>
+        </div>
+        <div class="problem-card">
+          <span class="icon">📋</span>
+          <h3>Staff spends hours on repetitive tasks</h3>
+          <p>Scheduling, confirmations, follow-ups — all manual. All error-prone. All billable hours wasted.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-label">What We Build</div>
+      <h2 class="section-title">AI agents tailored to your business</h2>
+      <p class="section-subtitle">Custom-built automation that works with your existing tools. No new software to learn.</p>
+      <div class="services">
+        <div class="service-card">
+          <div class="tag-sm">Most Popular</div>
+          <h3>AI Phone Agent</h3>
+          <p>Answers calls, qualifies leads, and books appointments in natural conversation.</p>
+          <ul>
+            <li>Handles calls 24/7, even after hours</li>
+            <li>Knows your services, pricing, and availability</li>
+            <li>Transfers complex issues to your team</li>
+            <li>Integrates with your calendar</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>Lead Follow-Up Agent</h3>
+          <p>Automatically follows up with every lead via SMS and email until they book or decline.</p>
+          <ul>
+            <li>Instant response to web form submissions</li>
+            <li>3-touch follow-up sequence over 7 days</li>
+            <li>Personalized messages, not templates</li>
+            <li>Escalates hot leads to your phone</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>Review & Reputation Agent</h3>
+          <p>Automatically requests reviews from happy customers and responds to new reviews.</p>
+          <ul>
+            <li>Sends review requests after appointments</li>
+            <li>Responds to Google/Yelp reviews instantly</li>
+            <li>Flags negative reviews for your attention</li>
+            <li>BUILDS your star rating on autopilot</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Live in 7 days, not 7 months</h2>
+      <p class="section-subtitle">No lengthy onboarding. No complex setup. We handle everything.</p>
+      <div class="how-it-works">
+        <div class="step">
+          <h3>Free Consultation</h3>
+          <p>15-minute call to understand your business, current bottlenecks, and goals.</p>
+        </div>
+        <div class="step">
+          <h3>Custom Build</h3>
+          <p>We build your AI agents, trained on your services, pricing, and brand voice.</p>
+        </div>
+        <div class="step">
+          <h3>Launch & Monitor</h3>
+          <p>We deploy, test, and optimize. You see results in the first week.</p>
+        </div>
+        <div class="step">
+          <h3>Scale & Grow</h3>
+          <p>Add more agents, more channels. We maintain everything so you focus on your business.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-subtitle">No hidden fees. No long-term contracts. Cancel anytime.</p>
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Starter</h3>
+          <div class="price">$2,000</div>
+          <div class="price-note">One-time setup + $500/month</div>
+          <ul>
+            <li>1 AI agent (phone or follow-up)</li>
+            <li>Calendar integration</li>
+            <li>SMS notifications</li>
+            <li>Monthly performance report</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary">Get Started</a>
+        </div>
+        <div class="price-card featured">
+          <h3>Growth</h3>
+          <div class="price">$3,500</div>
+          <div class="price-note">One-time setup + $1,000/month</div>
+          <ul>
+            <li>3 AI agents (phone + follow-up + reviews)</li>
+            <li>Calendar + CRM integration</li>
+            <li>SMS + email automation</li>
+            <li>Weekly performance reports</li>
+            <li>Priority Slack support</li>
+            <li>Monthly optimization calls</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <div class="price">Custom</div>
+          <div class="price-note">Tailored to multi-location businesses</div>
+          <ul>
+            <li>Unlimited AI agents</li>
+            <li>Full tech stack integration</li>
+            <li>Multi-location support</li>
+            <li>Dedicated account manager</li>
+            <li>Custom reporting dashboard</li>
+            <li>Same-day support SLA</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+      <div class="section-label">Get Started</div>
+      <h2>Stop losing customers.<br>Start today.</h2>
+      <p>Book a free 15-minute consultation. We'll show you exactly how AI agents would work for your specific business.</p>
+      <div class="cta-group">
+        <a href="mailto:clawvershipps@gmail.com?subject=Free%20Demo%20Request" class="btn btn-primary">Book a Free Demo</a>
+        <a href="mailto:clawvershipps@gmail.com?subject=Quick%20Question" class="btn btn-secondary">Ask a Question</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Clawver AI. Built by an AI agent, for businesses that move fast.</p>
+    </footer>
+  </div>
+
+</body>
+</html>
