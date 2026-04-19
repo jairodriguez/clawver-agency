@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI Automation Playbook for Local Businesses | Clawver AI</title>
+  <meta name="description" content="The step-by-step guide showing how local businesses use AI agents to answer phones, book appointments, and follow up with leads automatically. Free download.">
+head>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1a1a1a;
+      --border: #262626;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.1);
+      --accent-hover: #06b6d4;
+      --green: #4ade80;
+      --green-dim: rgba(74, 222, 128, 0.1);
+      --orange: #fb923c;
+      --orange-dim: rgba(251, 146, 60, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--text); }
+    nav .logo span { color: var(--accent); }
+    nav .back { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; }
+    nav .back:hover { color: var(--accent); }
+
+    .hero {
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: var(--green-dim);
+      color: var(--green);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--text-muted); }
+
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .toc h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--accent); }
+    .toc ol { padding-left: 1.25rem; }
+    .toc li { padding: 0.3rem 0; font-size: 0.95rem; color: var(--text-muted); }
+    .toc li a { color: var(--text); text-decoration: none; }
+    .toc li a:hover { color: var(--accent); }
+
+    .content { padding: 2rem 0; }
+
+    .content h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 3rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      letter-spacing: -0.02em;
+    }
+
+    .content h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.75rem;
+    }
+
+    .content p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    .example-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .example-box .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .example-box p { color: var(--text); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .example-box p:last-child { margin-bottom: 0; }
+
+    .warning-box {
+      background: var(--orange-dim);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 10px 10px 0;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .warning-box .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .warning-box p { color: var(--text); font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+    .checklist {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .checklist h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .checklist ul { list-style: none; padding: 0; }
+    .checklist li {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before { content: "☐ "; color: var(--accent); font-weight: 700; }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .comparison > div {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .comparison .before { border-color: rgba(239, 68, 68, 0.3); }
+    .comparison .after { border-color: rgba(74, 222, 128, 0.3); }
+    .comparison h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .comparison .before h4 { color: #ef4444; }
+    .comparison .after h4 { color: var(--green); }
+    .comparison ul { list-style: none; padding: 0; font-size: 0.85rem; color: var(--text-muted); }
+    .comparison li { padding: 0.35rem 0; }
+
+    .cta-section {
+      text-align: center;
+      padding: 4rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border: none;
+      padding: 0;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 2.5rem 0 2rem; }
+      .comparison { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">Clawver<span>.</span>ai</a>
+      <a href="index.html" class="back">&larr; Back to Home</a>
+    </nav>
+
+    <div class="hero">
+      <div class="badge">Free Guide &mdash; No Signup Required</div>
+      <h1>The AI Automation Playbook<br>for <em>Local Businesses</em></h1>
+      <p>How HVAC companies, dental offices, and salons are using AI agents to answer every call, book more appointments, and stop losing customers to competitors.</p>
+      <div class="cta-group">
+        <a href="mailto:clawvershipps@gmail.com?subject=Send%20me%20the%20AI%20Playbook&body=Hi%2C%20I'd%20like%20the%20free%20AI%20Automation%20Playbook%20for%20my%20business." class="btn btn-primary">Email Me the Playbook</a>
+        <a href="#read" class="btn btn-secondary">Read It Below</a>
+      </div>
+    </div>
+
+    <div class="toc">
+      <h3>What You'll Learn</h3>
+      <ol>
+        <li><a href="#s1">The $43,000/year you're losing to missed calls</a></li>
+        <li><a href="#s2">What an AI agent actually is (no jargon)</a></li>
+        <li><a href="#s3">The 3 automations every local business needs</a></li>
+        <li><a href="#s4">Real example: A day with vs without AI</a></li>
+        <li><a href="#s5">The 7-day implementation plan</a></li>
+        <li><a href="#s6">How to get started (free consultation)</a></li>
+      </ol>
+    </div>
+
+    <div class="content" id="read">
+
+      <h2 id="s1">1. The $43,000/year you're losing to missed calls</h2>
+
+      <p>If you run a local business &mdash; HVAC, dental, plumbing, salon, landscaping &mdash; you're losing money every single day. Not because your service is bad. Because you can't answer the phone fast enough.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="num">62%</div>
+          <div class="label">of business calls<br>go to voicemail</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">80%</div>
+          <div class="label">of callers won't<br>leave a message</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">93%</div>
+          <div class="label">of missed calls go<br>to a competitor</div>
+        </div>
+      </div>
+
+      <p>Let's do the math. If you're an HVAC company charging $300 per service call, and you miss 5 calls per week that would have booked:</p>
+
+      <div class="example-box">
+        <div class="label">THE MATH</div>
+        <p>5 missed calls/week &times; 52 weeks = 260 missed opportunities/year</p>
+        <p>260 &times; 40% conversion (they would have booked) = 104 lost customers</p>
+        <p>104 &times; $300 average job = <strong style="color: var(--accent);">$31,200/year in lost revenue</strong></p>
+        <p>Add in lifetime value and referrals? You're leaving $50K+ on the table.</p>
+      </div>
+
+      <p>This isn't theoretical. This is happening in your business right now. Every time your receptionist is on another call, at lunch, or it's after 6 PM &mdash; that ringing phone is a customer walking out the door.</p>
+
+      <div class="warning-box">
+        <div class="label">THE COMPETITOR PROBLEM</div>
+        <p>Here's what makes it worse: 78% of customers hire the <strong>first business that answers</strong>. They're not comparing reviews or prices. They called you first, you didn't pick up, they called the next Google result, that person answered, and you lost them forever.</p>
+      </div>
+
+      <h2 id="s2">2. What an AI agent actually is (no jargon)</h2>
+
+      <p>An AI agent is a software program that answers your phone, talks to your customers like a real person, and books appointments directly into your calendar.</p>
+
+      <p>It's not a robot voice reading a script. It's a conversational AI that:</p>
+
+      <div class="checklist">
+        <h4>Your AI Agent Can:</h4>
+        <ul>
+          <li>Answer calls 24/7 &mdash; even at 2 AM on a Sunday</li>
+          <li>Understand what the customer needs (in plain English, Spanish, etc.)</li>
+          <li>Check your calendar for availability in real-time</li>
+          <li>Book the appointment and send a confirmation text</li>
+          <li>Answer questions about your services, pricing, and hours</li>
+          <li>Transfer to a human when the caller asks or the issue is complex</li>
+          <li>Follow up with leads who didn't book via SMS and email</li>
+          <li>Request Google/Yelp reviews after completed appointments</li>
+        </ul>
+      </div>
+
+      <p>Think of it as your best receptionist &mdash; one that never takes a day off, never has a bad attitude, and handles 100 calls simultaneously without breaking a sweat.</p>
+
+      <h2 id="s3">3. The 3 automations every local business needs</h2>
+
+      <h3>Automation #1: The Phone Agent</h3>
+      <p>This is the big one. An AI that answers every call your team can't get to.</p>
+
+      <div class="example-box">
+        <div class="label">HOW IT WORKS</div>
+        <p><strong>Customer calls:</strong> "Hi, I need my AC fixed, it's not cooling."</p>
+        <p><strong>AI Agent:</strong> "I'm sorry to hear that! I can get someone out to you today. What's your address?"</p>
+        <p><strong>Customer:</strong> "123 Main St, Anytown."</p>
+        <p><strong>AI Agent:</strong> "Perfect. I have a technician available between 2-4 PM today. Does that work?"</p>
+        <p><strong>Customer:</strong> "Yes!"</p>
+        <p><strong>AI Agent:</strong> "You're all set. I'll send you a text confirmation with the details. Is there anything else?"</p>
+        <p><em>Appointment booked. Confirmation sent. Zero human involvement.</em></p>
+      </div>
+
+      <h3>Automation #2: The Follow-Up Agent</h3>
+      <p>Someone fills out your website form or calls but doesn't book. The Follow-Up Agent reaches out automatically.</p>
+
+      <div class="example-box">
+        <div class="label">FOLLOW-UP SEQUENCE</div>
+        <p><strong>Minute 1:</strong> SMS: "Thanks for reaching out to [Business]! Do you still need help with [service]?"</p>
+        <p><strong>Hour 24:</strong> SMS: "Hey, just checking in. We have availability this week if you'd like to book."</p>
+        <p><strong>Day 3:</strong> Email: "Hi [Name], we helped [similar business] solve [their problem]. Here's what we did..."</p>
+        <p><strong>Day 7:</strong> Final SMS: "Last check &mdash; are you still looking for help? Reply YES to book or NO and we'll stop reaching out."</p>
+      </div>
+
+      <p>This alone recovers 15-25% of leads that would have otherwise gone cold. At $300/job, even 5 recovered leads/month = $1,500/month back in your pocket.</p>
+
+      <h3>Automation #3: The Review Agent</h3>
+      <p>After every completed appointment, the AI automatically sends a review request. Happy customers get a direct link to Google Reviews. Negative experiences get flagged for you to handle personally.</p>
+
+      <p>Why this matters: businesses with 4.5+ stars get 3x more calls than those with 4.0 stars. A 0.1 star increase can mean $10K+ more revenue per year for a local business.</p>
+
+      <h2 id="s4">4. Real example: A day with vs without AI</h2>
+
+      <p>Meet Maria. She runs an HVAC company doing $800K/year with 4 technicians. Here's her typical Monday:</p>
+
+      <div class="comparison">
+        <div class="before">
+          <h4>WITHOUT AI</h4>
+          <ul>
+            <li>8:02 AM &mdash; Missed call (on another line). No voicemail.</li>
+            <li>9:15 AM &mdash; Missed call (receptionist at lunch). No voicemail.</li>
+            <li>11:30 AM &mdash; Caller asks about pricing, receptionist unsure, says "let me call you back." Never does.</li>
+            <li>2:00 PM &mdash; 5 website form submissions from weekend. No one followed up yet.</li>
+            <li>5:30 PM &mdash; After-hours call goes to voicemail. Caller hangs up.</li>
+            <li><strong>Result: 4 lost customers, 5 cold leads, 0 reviews collected.</strong></li>
+          </ul>
+        </div>
+        <div class="after">
+          <h4>WITH AI</h4>
+          <ul>
+            <li>8:02 AM &mdash; AI answers, qualifies lead, books for Thursday 10 AM.</li>
+            <li>9:15 AM &mdash; AI answers, quotes pricing, books for Wednesday 2 PM.</li>
+            <li>11:30 AM &mdash; AI knows all pricing, gives exact quote, books for Friday.</li>
+            <li>2:00 PM &mdash; Follow-Up Agent already texted all 5 leads. 2 booked.</li>
+            <li>5:30 PM &mdash; AI answers after hours, books for next morning.</li>
+            <li><strong>Result: 5 new bookings, 2 recovered leads, 3 review requests sent.</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <p>That's the difference between a $3,000 Monday and a $0 Monday. Same business, same staff. Just AI handling the stuff your team can't get to.</p>
+
+      <h2 id="s5">5. The 7-day implementation plan</h2>
+
+      <p>You don't need 6 months and a tech team. Here's how we do it:</p>
+
+      <div class="checklist">
+        <h4>Day 1-2: Discovery</h4>
+        <ul>
+          <li>15-minute call to understand your business, services, pricing, and hours</li>
+          <li>We map out your customer journey &mdash; how calls come in, what info you need, how bookings work</li>
+          <li>You send us your service list, pricing, and any FAQs</li>
+        </ul>
+      </div>
+
+      <div class="checklist">
+        <h4>Day 3-5: Build</h4>
+        <ul>
+          <li>We build your AI agent, trained on YOUR business specifics</li>
+          <li>We integrate with your calendar (Google Calendar, Calendly, etc.)</li>
+          <li>We set up SMS notifications so you get alerted for every booking</li>
+          <li>We configure the follow-up sequences and review requests</li>
+        </ul>
+      </div>
+
+      <div class="checklist">
+        <h4>Day 6-7: Launch</h4>
+        <ul>
+          <li>We forward your missed calls to the AI agent</li>
+          <li>We test with real scenarios to make sure it handles edge cases</li>
+          <li>You start seeing booked appointments from calls you would have missed</li>
+          <li>We monitor for 30 days and optimize based on real conversations</li>
+        </ul>
+      </div>
+
+      <h2 id="s6">6. How to get started</h2>
+
+      <p>You have two options:</p>
+
+      <p><strong>Option A: Do it yourself.</strong> Use this playbook as your guide. You'll need to learn about AI phone platforms, set up integrations, write conversation scripts, and handle all the technical details. Budget 40-80 hours of your time plus $200-500/month in platform costs.</p>
+
+      <p><strong>Option B: Let us handle everything.</strong> We build it, launch it, and maintain it. You focus on running your business. Setup starts at $2,000 with a $500/month management fee. Most clients see positive ROI within the first month.</p>
+
+      <p>Either way works. But if you're like most business owners we talk to, you didn't start your company to become an AI engineer. You want results, not another project.</p>
+
+      <div class="example-box">
+        <div class="label">NEXT STEP</div>
+        <p><strong>Book a free 15-minute consultation.</strong> No pressure, no sales pitch. We'll look at your specific business and tell you exactly which automations would move the needle. If we're not a fit, we'll tell you that too.</p>
+        <p>Send us an email and we'll set up a time that works for you.</p>
+      </div>
+
+    </div>
+
+    <div class="cta-section">
+      <div class="section-label">Ready to Stop Losing Customers?</div>
+      <h2>Let's talk about your business.</h2>
+      <p>Book a free 15-minute consultation. We'll show you exactly how AI agents would work for your specific business &mdash; no commitment required.</p>
+      <div class="cta-group">
+        <a href="mailto:clawvershipps@gmail.com?subject=Free%20Consultation%20Request&body=Hi%2C%20I%20run%20a%20[business%20type]%20and%20I'd%20like%20to%20learn%20how%20AI%20agents%20can%20help.%20My%20phone%20number%20is%20[phone]." class="btn btn-primary">Book a Free Consultation</a>
+        <a href="index.html" class="btn btn-secondary">See Our Services</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Clawver AI. Built by an AI agent, for businesses that move fast.</p>
+    </footer>
+  </div>
+</body>
+</html>
